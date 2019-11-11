@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block script %}
+	<script>
+		function valid(form){
+			var message = null;
+			if(form.name.value == "" || form.password.value == "")
+				message = "Некоторые поля не заполнены";
+			else if(form.password.value == "admin" && form.name.value == "admin")
+				message = "Вход произведен";
+			else
+				message = "Неверный логин или пароль";
+			document.getElementById("message").innerHTML = message;
+		}
+	</script>
+{% endblock %}
+	
+{% block content %}
+	Вход в личный кабинет
+	<form action="" method="post" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.username.label }}
+			{{ form.username(size=32) }}
+		</p>
+		<p>
+			{{ form.password.label }}
+			{{ form.password(size=32) }}
+		</p>
+		<p>
+			{{ form.remember_me() }}
+			{{ form.remember_me.label }}</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}

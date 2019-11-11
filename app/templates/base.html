@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		{% if title %}
+			<title>{{ title }}</title>
+		{% else %}
+			<title>Калькулятор</title>
+		{% endif %}
+		{% block script %}{% endblock %}
+	</head>
+	<body>
+		<a href="{{ url_for('index') }}">Главная страница</a>
+		<a href="{{ url_for('login') }}">Вход</a>
+		<hr>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% endwith %}
+		{% block content %}{% endblock %}
+	</body>
+</html>
