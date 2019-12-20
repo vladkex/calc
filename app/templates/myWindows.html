@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <h1>Ваши окна:</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            {% for window in windows %}
+                <div class="well well-sm">
+                    <b>Окно:</b> <br>
+                    Фирма профиля: {{ window[1] }} <br>
+                    Высота: {{ window[2] }} мм <br>
+                    Ширина: {{ window[3] }} мм <br>
+                    Цена: {{ window[4]/100 }} рублей <br>
+                    {% for leaf in leafs %}
+                        {% if leaf[0] == window[0] %}
+                            <b>Створка</b> <br>
+                            Фирма фурнитуры: {{ leaf[1] }} <br>
+                            Высота: {{ leaf[2] }} мм <br>
+                            Ширина: {{ leaf[3] }} мм <br>
+                            Материал: {{ leaf[4] }} <br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

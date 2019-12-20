@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		{% if title %}
+			<title>{{ title }}</title>
+		{% else %}
+			<title>Калькулятор</title>
+		{% endif %}
+		{% block script %}{% endblock %}
+        {% block style %}{% endblock %}
+		<style src="{{ url_for('static', filename='myStyle.css') }}"></style>
+	</head>
+	<body>
+		<p class='leftstr'>
+			<a href="{{ url_for('index') }}">Главная страница</a>
+			<a href="{{ url_for('calk') }}">Калькулятор</a>
+			{% if user[0] != None or user[1] != None %}
+				<a href="{{ url_for('account') }}">Личный кабинет</a>
+			{% endif %}
+		</p>
+		<p class='rightstr'>
+			{% if user[0] != None or user[1] != None %}
+				<a href="{{ url_for('logout') }}">Выход</a>
+			{% else %}
+				<a href="{{ url_for('login') }}">Вход</a>
+			{% endif %}
+		</p>
+		{% block content %}{% endblock %}
+	</body>
+</html>

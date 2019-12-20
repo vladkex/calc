@@ -1,35 +1,11 @@
 {% extends "base.html" %}
-
-{% block script %}
-	<script>
-		function valid(form){
-			var message = null;
-			if(form.name.value == "" || form.password.value == "")
-				message = "Некоторые поля не заполнены";
-			else if(form.password.value == "admin" && form.name.value == "admin")
-				message = "Вход произведен";
-			else
-				message = "Неверный логин или пароль";
-			document.getElementById("message").innerHTML = message;
-		}
-	</script>
-{% endblock %}
+{% import 'bootstrap/wtf.html' as wtf %}
 	
-{% block content %}
-	Вход в личный кабинет
-	<form action="" method="post" novalidate>
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.username.label }}
-			{{ form.username(size=32) }}
-		</p>
-		<p>
-			{{ form.password.label }}
-			{{ form.password(size=32) }}
-		</p>
-		<p>
-			{{ form.remember_me() }}
-			{{ form.remember_me.label }}</p>
-		<p>{{ form.submit() }}</p>
-	</form>
+{% block app_content %}
+	<h1>Войти в аккаунт</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
 {% endblock %}

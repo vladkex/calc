@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+	<script src="{{ url_for('.static', filename='calk.js') }}"></script>
+    {{super()}}
+{% endblock %}
+
+{% block app_content %}
+    <form action='' method='post' novalidate>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form.hidden_tag() }}
+                <div class="form-group  required">
+                    {{ form.FirmProfile.label(class="control-label") }}
+                    {{ form.FirmProfile(class="form-control") }}
+                </div>
+                <div class="form-group  required">
+                    {{ form.FirmFitting.label(class="control-label") }}
+                    {{ form.FirmFitting(class="form-control") }}
+                </div>
+                <div class="form-group  required">
+                    {{ form.width.label(class="control-label") }}
+                    {{ form.width(class="form-control") }}
+                    {% for error in form.width.errors %}
+                        <span style='color: red;'>[Данное поле не заполнено]</span>
+                    {% endfor %}
+                </div>
+                <p>
+                    {{ form.height.label(class="control-label") }}
+                    {{ form.height(class="form-control") }}
+                    {% for error in form.height.errors %}
+                        <span style='color: red;'>[Данное поле не заполнено]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.WindowType.label(class="control-label") }}
+                    {{ form.WindowType(class="form-control") }}
+                </p>
+            </div>
+        </div>
+
+        <table class='calk' id='tableWindow' border='0' cols='3'>
+            <tr>
+                <td class='calk' id='tableFold_1'>
+                    <div style='display: block;' id='fold_1'>
+                        Первая створка<br>
+                        <p>
+                            {{ form.widthLeaf1.label(class="control-label") }}<br>
+                            {{ form.widthLeaf1(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.fillMaterial1.label(class="control-label") }}<br>
+                            {{ form.fillMaterial1(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.mechanism1.label(class="control-label") }}<br>
+                            {{ form.mechanism1(class="form-control") }}
+                        </p>
+                    </div>
+                </td>
+                <td class='calk' id='tableFold_2'>
+                    <div style='display: none;' id='fold_2'>
+                        Вторая створка<br>
+                        <p>
+                            {{ form.widthLeaf2.label(class="control-label") }}<br>
+                            {{ form.widthLeaf2(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.fillMaterial2.label(class="control-label") }}<br>
+                            {{ form.fillMaterial2(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.mechanism2.label(class="control-label") }}<br>
+                            {{ form.mechanism2(class="form-control") }}
+                        </p>
+                    </div>
+                </td>
+                <td class='calk' id='tableFold_3'>
+                    <div style='display: none;' id='fold_3'>
+                        Третья створка<br>
+                        <p>
+                            {{ form.widthLeaf3.label(class="control-label") }}<br>
+                            {{ form.widthLeaf3(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.fillMaterial3.label(class="control-label") }}<br>
+                            {{ form.fillMaterial3(class="form-control") }}
+                        </p>
+                        <p>
+                            {{ form.mechanism3.label(class="control-label") }}<br>
+                            {{ form.mechanism3(class="form-control") }}
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <p>{{ form.submit(class="btn btn-default") }}</p>
+    </form>
+
+{% endblock %}

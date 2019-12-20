@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %}
-	<h1>Привет, {{ user.username }}!</h1>
+{% block app_content %}
+	{% if user[0] != None %}
+			<h1>Привет, {{ user[0] }}!</h1>
+		{% else %}
+			{% if user[1] != None %}
+				<h1>Привет, {{ user[1] }}!</h1>
+			{% else %}
+				<h1>Привет, незнакомец!</h1>
+			{% endif %}
+	{% endif %}
 {% endblock %}

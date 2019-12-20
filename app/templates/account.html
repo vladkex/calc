@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% if user[0] != None %}
+        <h1>Добро пожаловать в личный кабинет, {{ user[0] }}.</h1>
+    {% else %}
+        <h1>Добро пожаловать в личный кабинет, {{ user[1] }}.</h1>
+    {% endif %}
+    <br>
+    <div class="btn-group">
+        <a class="list-group-item" href="{{ url_for('myWindows') }}">История окон</a>
+        <a class="list-group-item" href="{{ url_for('changePassword') }}">Изменить пароль</a>
+        {% if user[2] != 0 %}
+            <a class="list-group-item" href="{{ url_for('newAccount') }}">Создать новый аккаунт</a>
+        {% endif %}
+    </div>
+{% endblock %}
+

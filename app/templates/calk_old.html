@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block script %}
+	<script src='{{ url_for('static', filename='calk.js') }}'></script>
+{% endblock %}
+
+{% block content %}
+	Выберете фирму профиля:
+	<select id='select1' name='select1' size='1'>
+		<option selected value='s1'>Ричмонт</option>
+		<option value='s2'>Рехао</option>
+	</select><br>
+	Выберете фирму фурнитуры:
+	<select id='select1' name='select1' size='1'>
+		<option selected value='s1'>Аксор</option>
+		<option value='s2'>Что-то еще</option>
+	</select><br>
+	Укажите размер рамы:<br>
+	<label for='heightWindow'>Высота:</label>
+	<input type='text' name='heightWindow' placeholder='1000' id='heightWindow'/>
+	<label for='widthWindow'>Ширина:</label>
+	<input type='text' name='widthWindow' placeholder='600' id='widthWindow'/>
+	<br>
+	Выберете тип окна:<br>
+	<button id='typeWindow_1' onclick='typeWindowClick(this)'>Одна створка</button>
+	<button id='typeWindow_2' onclick='typeWindowClick(this)'>Две створки</button>
+	<button id='typeWindow_3' onclick='typeWindowClick(this)'>Три створки</button>
+	<button id='typeWindow_4' onclick='typeWindowClick(this)'>Две створки вертикально</button>
+	<br>
+	<table id='tableWindow' border='0' cols='3'>
+		<tr>
+			<td id='tableFold_1' width='200'><div id='fold_1'>Вонька 1</div></td>
+			<td id='tableFold_2' width='200'><div id='fold_2'>Пися 2</div></td>
+			<td id='tableFold_3' width='200'><div id='fold_3'>Какуля 3</div></td>
+		</tr>
+	</table>
+
+{% endblock %}

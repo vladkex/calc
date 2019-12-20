@@ -1,0 +1,24 @@
+.red{
+ color: #ff2d28;
+}
+
+body {
+ padding-top: 70px;
+}
+
+.leftstr, .rightstr {
+ float: left; /* Обтекание справа */
+ width: 50%; /* Ширина текстового блока */
+ font-family: Verdana, Geneva, sans-serif;
+}
+.rightstr {
+ text-align: right; /* Выравнивание по правому краю */}
+
+table.calk {
+ width: 100%; /* Ширина таблицы */
+}
+td.calk {
+ width: 33%;
+ padding: 2%; /* Поля в ячейках */
+ vertical-align: top; /* Выравнивание по верхнему краю ячеек */
+}
