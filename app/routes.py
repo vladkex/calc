@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from flask import render_template, flash, redirect, url_for, make_response, session
+from flask import render_template, flash, redirect, url_for, make_response, session, send_from_directory
 from app import app, conn
 from app.forms import LoginForm, WindowForm, CreateAccountForm, ChangePasswordForm
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -37,6 +37,11 @@ def index():
 		cursor.execute('select name, login from account where id = %s', (current_user.id,))
 		user = cursor.fetchone()
 	return render_template('index.html', title='Главная страница', user=user)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/account')
