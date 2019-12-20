@@ -9,3 +9,6 @@ conn = psycopg2.connect(dbname='calculator_windows_and_doors', user='postgres', 
 bootstrap = Bootstrap(app)
 
 from app import routes
+
+
+
