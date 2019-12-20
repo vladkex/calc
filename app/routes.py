@@ -28,7 +28,7 @@ def load_user(user_id):
 cursor = conn.cursor()
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def index():
 	if not current_user.is_authenticated:
